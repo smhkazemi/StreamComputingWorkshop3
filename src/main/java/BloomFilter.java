@@ -18,24 +18,24 @@ class BloomFilter<Key>{
 	void insert(Key key)
 	{
 		int h = AbstractHash.basicHashingFor(key);
-		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
+		for(AbstractHash hashFunction : arrayOfHashFunctions)
 		{
-			int hu = AbstractHashFunction.getHashFor(h, lengthOfMembershipArray);
+			int hu = hashFunction.getHashFor(h, lengthOfMembershipArray);
 			membershipArray[hu % lengthOfMembershipArray] = true;
 		}
 	}
 	
 	boolean query(Key key)
 	{
-		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
+		for(AbstractHash hashFunction : arrayOfHashFunctions)
 		{
-			int inRangeHashForKey = AbstractHashFunction.getHashFor(AbstractHash.basicHashingFor(key), lengthOfMembershipArray)
+			int inRangeHashForKey = hashFunction.getHashFor(AbstractHash.basicHashingFor(key), lengthOfMembershipArray)
 									% lengthOfMembershipArray;
 			if(!membershipArray[inRangeHashForKey])
 			{
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 }

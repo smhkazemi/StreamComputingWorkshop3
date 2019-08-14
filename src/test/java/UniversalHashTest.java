@@ -14,13 +14,13 @@ public class UniversalHashTest {
         for(String s : ss)
         {
             sb.insert(s);
-            if(sb.query(s))
+            if(!sb.query(s))
                 throw new Exception("!si.query(s)");
         }
         for(int i = 0;i < m; i += 3)
         {
             si.insert(i);
-            if(si.query(i))
+            if(!si.query(i))
                 throw new Exception("!si.query(i)");
         }
     }
