@@ -1,5 +1,5 @@
 public class UniversalHashTest {
-    public static void main(String args[]){ //for testing
+    static void doTest(String args[]) throws Exception { //for testing
         if(args.length != 2){
             System.err.println("should be two arguments: lengthOfMembershipArray numberOfHashFunctionsToUse");
             System.exit(0);
@@ -14,18 +14,14 @@ public class UniversalHashTest {
         for(String s : ss)
         {
             sb.insert(s);
-        }
-        for(String s : ss)
-        {
-            assert sb.query(s);
+            if(!sb.query(s))
+                throw new Exception("!si.query(s)");
         }
         for(int i = 0;i < m; i += 3)
         {
             si.insert(i);
-        }
-        for(int i = 0;i < m; i++)
-        {
-            assert ((si.query(i)) && (i %3 != 0));
+            if(!si.query(i))
+                throw new Exception("!si.query(i)");
         }
     }
 }
