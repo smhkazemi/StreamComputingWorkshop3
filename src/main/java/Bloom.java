@@ -1,35 +1,30 @@
-// Bloom.java
-// Bloom filter class
-// awirth for COMP90056
-// Aug 2017,8,9
 
 public class Bloom<Key>{
+
 	private int lengthOfMembershipArray;
-	private int numberOfHashFunctionsToUse;
-	private Hash[] arrayOfHashFunctions;
+	private AbstractHash[] arrayOfAbstractHashFunctions;
 	private boolean[] membershipArray;
 	
 	public Bloom(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
-		this.lengthOfMembershipArray = lengthOfMembershipArray; // initialize lengthOfMembershipArray & numberOfHashFunctionsToUse
-		this.numberOfHashFunctionsToUse = numberOfHashFunctionsToUse;
-		membershipArray = new boolean[lengthOfMembershipArray];//initializes to false
-		arrayOfHashFunctions = new Hash[numberOfHashFunctionsToUse]; // build an array of numberOfHashFunctionsToUse arrayOfHashFunctions functions
+		this.lengthOfMembershipArray = lengthOfMembershipArray;
+		membershipArray = new boolean[lengthOfMembershipArray];
+		arrayOfAbstractHashFunctions = new AbstractHash[numberOfHashFunctionsToUse];
 		for(int i = 0; i< numberOfHashFunctionsToUse; i++){
-			arrayOfHashFunctions[i] = new Hash();
+			arrayOfAbstractHashFunctions[i] = new AbstractHash();
 		}
 	}
 	
 	public void insert(Key key){
-		int h = Hash.basicHashingFor(key);
-		for(Hash hashFunction : arrayOfHashFunctions){
-			int hu = hashFunction.getHashFor(h, lengthOfMembershipArray);
+		int h = AbstractHash.basicHashingFor(key);
+		for(AbstractHash AbstractHashFunction : arrayOfAbstractHashFunctions){
+			int hu = AbstractHashFunction.getHashFor(h, lengthOfMembershipArray);
 			membershipArray[hu % lengthOfMembershipArray] = true;
 		}
 	}
 	
 	public boolean query(Key key){
-		for(Hash hashFunction : arrayOfHashFunctions){
-			int hu = hashFunction.getHashFor(Hash.basicHashingFor(key), lengthOfMembershipArray);
+		for(AbstractHash AbstractHashFunction : arrayOfAbstractHashFunctions){
+			int hu = AbstractHashFunction.getHashFor(AbstractHash.basicHashingFor(key), lengthOfMembershipArray);
 			if(!membershipArray[hu % lengthOfMembershipArray]){
 				return false;
 			}

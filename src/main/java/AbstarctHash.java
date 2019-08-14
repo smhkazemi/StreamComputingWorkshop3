@@ -5,11 +5,11 @@
 
 import edu.princeton.cs.introcs.StdRandom;
 
-public class Hash{
+public class AbstractHash {
 	private int p = 24593; //smaller than 2^15
 	private int a,b;		// only use for hash tables < 24593 in size
 	
-	public Hash(){
+	public AbstractHash(){
 		a = StdRandom.uniform(p-1)+1;	// choose random parameters
 		b = StdRandom.uniform(p);
 	}
@@ -24,7 +24,7 @@ public class Hash{
 	}
 	
 	public static void main(String args[]){
-		Hash h = new Hash();
+		AbstractHash h = new AbstractHash();
 		
 		int h2 = h.getHashFor(100,20);
 	}
