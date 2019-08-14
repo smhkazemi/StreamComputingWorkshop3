@@ -11,7 +11,7 @@ public class UniversalHash extends AbstractHash {
     }
 
     @Override
-    public int getHashFor(Integer sampledNumber, Integer samplingArraySize){
+    public int getHashFor(int sampledNumber, int samplingArraySize){
         return (firstCoefficient * sampledNumber + secondCoefficient) % aLargePrimeNumber % samplingArraySize;
     }
 }

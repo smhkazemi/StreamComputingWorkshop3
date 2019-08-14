@@ -1,31 +1,38 @@
 
-public class Bloom<Key>{
+public class BloomFilter<Key>{
 
 	private int lengthOfMembershipArray;
-	private AbstractHash[] arrayOfAbstractHashFunctions;
+	private AbstractHash[] arrayOfHashFunctions;
 	private boolean[] membershipArray;
 	
-	public Bloom(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
+	public BloomFilter(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
 		this.lengthOfMembershipArray = lengthOfMembershipArray;
 		membershipArray = new boolean[lengthOfMembershipArray];
-		arrayOfAbstractHashFunctions = new AbstractHash[numberOfHashFunctionsToUse];
-		for(int i = 0; i< numberOfHashFunctionsToUse; i++){
-			arrayOfAbstractHashFunctions[i] = new AbstractHash();
+		arrayOfHashFunctions = new AbstractHash[numberOfHashFunctionsToUse];
+		for(int index = 0; index < numberOfHashFunctionsToUse; index++)
+		{
+			arrayOfHashFunctions[index] = new UniversalHash();
 		}
 	}
 	
-	public void insert(Key key){
+	public void insert(Key key)
+	{
 		int h = AbstractHash.basicHashingFor(key);
-		for(AbstractHash AbstractHashFunction : arrayOfAbstractHashFunctions){
+		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
+		{
 			int hu = AbstractHashFunction.getHashFor(h, lengthOfMembershipArray);
 			membershipArray[hu % lengthOfMembershipArray] = true;
 		}
 	}
 	
-	public boolean query(Key key){
-		for(AbstractHash AbstractHashFunction : arrayOfAbstractHashFunctions){
-			int hu = AbstractHashFunction.getHashFor(AbstractHash.basicHashingFor(key), lengthOfMembershipArray);
-			if(!membershipArray[hu % lengthOfMembershipArray]){
+	public boolean query(Key key)
+	{
+		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
+		{
+			int inRangeHashForKey = AbstractHashFunction.getHashFor(AbstractHash.basicHashingFor(key), lengthOfMembershipArray)
+									% lengthOfMembershipArray;
+			if(!membershipArray[inRangeHashForKey])
+			{
 				return false;
 			}
 		}
@@ -43,8 +50,8 @@ public class Bloom<Key>{
 
 		String ss[] = {"Tony","Matthias","Yadeesha","Shuo"};
 		int m=100;
-		Bloom<String> sb = new Bloom(n,k);
-		Bloom<Integer> si = new Bloom(n,k);
+		BloomFilter<String> sb = new BloomFilter(n,k);
+		BloomFilter<Integer> si = new BloomFilter(n,k);
 		for(String s:ss){
 			sb.insert(s);
 		}
