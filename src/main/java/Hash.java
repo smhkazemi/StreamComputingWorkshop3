@@ -13,19 +13,19 @@ public class Hash{
 		a = StdRandom.uniform(p-1)+1;	// choose random parameters
 		b = StdRandom.uniform(p);
 	}
-	public int h2u(int x,int r){
+	public int getHashFor(int x, int r){
 
 		int y = (a*x+b) % p;
 		return y % r;
 	}
 	
-	public static int h_basic(Object key){	    // if you only want the
+	public static int basicHashingFor(Object key){	    // if you only want the
 	    return (key.hashCode() & 0x0000ffff);   // lower 16 bits
 	}
 	
 	public static void main(String args[]){
 		Hash h = new Hash();
 		
-		int h2 = h.h2u(100,20);
+		int h2 = h.getHashFor(100,20);
 	}
 }

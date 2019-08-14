@@ -3,49 +3,43 @@
 // awirth for COMP90056
 // Aug 2017,8,9
 
-import java.util.ArrayList;
-
 public class Bloom<Key>{
-	private int n; // size of the array
-	private int k; // number of hash functions
-	private Hash[] hash;
+	private int lengthOfMembershipArray;
+	private int numberOfHashFunctionsToUse;
+	private Hash[] arrayOfHashFunctions;
+	private boolean[] membershipArray;
 	
-	private boolean[] A;
-	
-	public Bloom(int n,int k){
-		this.n = n; // initialize n & k
-		this.k = k;
-		A = new boolean[n];//initializes to false
-		hash = new Hash[k]; // build an array of k hash functions
-		for(int i=0;i<k;i++){
-			hash[i] = new Hash();
+	public Bloom(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
+		this.lengthOfMembershipArray = lengthOfMembershipArray; // initialize lengthOfMembershipArray & numberOfHashFunctionsToUse
+		this.numberOfHashFunctionsToUse = numberOfHashFunctionsToUse;
+		membershipArray = new boolean[lengthOfMembershipArray];//initializes to false
+		arrayOfHashFunctions = new Hash[numberOfHashFunctionsToUse]; // build an array of numberOfHashFunctionsToUse arrayOfHashFunctions functions
+		for(int i = 0; i< numberOfHashFunctionsToUse; i++){
+			arrayOfHashFunctions[i] = new Hash();
 		}
 	}
 	
 	public void insert(Key key){
-		int h = Hash.h_basic(key);
-		for(int i=0;i<k;i++){
-			int hu = hash[i].h2u(h, n); // hash the key with each
-						    // hash function
-			A[hu % n]=true;	    // set every hashed position bit
-					    // to true
+		int h = Hash.basicHashingFor(key);
+		for(Hash hashFunction : arrayOfHashFunctions){
+			int hu = hashFunction.getHashFor(h, lengthOfMembershipArray);
+			membershipArray[hu % lengthOfMembershipArray] = true;
 		}
 	}
 	
 	public boolean query(Key key){
-		int h = Hash.h_basic(key);
-		for(int i=0;i<k;i++){
-			int hu = hash[i].h2u(h, n); // hash the key
-			if(!A[hu % n]){		    // if at least one of the
-				return false;	    // bits is false, return
-			}			    // false
+		for(Hash hashFunction : arrayOfHashFunctions){
+			int hu = hashFunction.getHashFor(Hash.basicHashingFor(key), lengthOfMembershipArray);
+			if(!membershipArray[hu % lengthOfMembershipArray]){
+				return false;
+			}
 		}
 		return true;
 	}
 	
 	public static void main(String args[]){ //for testing
 		if(args.length != 2){
-			System.err.println("should be two arguments: n k");
+			System.err.println("should be two arguments: lengthOfMembershipArray numberOfHashFunctionsToUse");
 			System.exit(0);
 		}
 		int n = Integer.parseInt(args[0]);
