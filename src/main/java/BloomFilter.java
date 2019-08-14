@@ -1,11 +1,11 @@
 
-public class BloomFilter<Key>{
+class BloomFilter<Key>{
 
 	private int lengthOfMembershipArray;
 	private AbstractHash[] arrayOfHashFunctions;
 	private boolean[] membershipArray;
 	
-	public BloomFilter(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
+	BloomFilter(int lengthOfMembershipArray, int numberOfHashFunctionsToUse){
 		this.lengthOfMembershipArray = lengthOfMembershipArray;
 		membershipArray = new boolean[lengthOfMembershipArray];
 		arrayOfHashFunctions = new AbstractHash[numberOfHashFunctionsToUse];
@@ -15,7 +15,7 @@ public class BloomFilter<Key>{
 		}
 	}
 	
-	public void insert(Key key)
+	void insert(Key key)
 	{
 		int h = AbstractHash.basicHashingFor(key);
 		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
@@ -25,7 +25,7 @@ public class BloomFilter<Key>{
 		}
 	}
 	
-	public boolean query(Key key)
+	boolean query(Key key)
 	{
 		for(AbstractHash AbstractHashFunction : arrayOfHashFunctions)
 		{
@@ -33,9 +33,9 @@ public class BloomFilter<Key>{
 									% lengthOfMembershipArray;
 			if(!membershipArray[inRangeHashForKey])
 			{
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 }
