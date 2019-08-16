@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Reservoir{
+class Reservoir{
 	private Object[] sampleArray;
 	private Random randomGenerator;
 	private int lastIndexOnSampleArrayToInsert;
@@ -14,7 +14,7 @@ public class Reservoir{
 		randomGenerator.setSeed(1234567890);
 	}
 	
-	public void considerItem(Object toConsider){
+	void considerItem(Object toConsider){
 		numberOfSeenItemsInStream++;
 		if(lastIndexOnSampleArrayToInsert < sampleArray.length)
 		{
@@ -28,7 +28,7 @@ public class Reservoir{
 		}
 	}
 	
-	public Object[] report()
+	Object[] report()
 	{
 		Object[] resualt = new Object[lastIndexOnSampleArrayToInsert];
 		System.arraycopy(sampleArray, 0, resualt, 0, lastIndexOnSampleArrayToInsert);
