@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
@@ -14,10 +15,7 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
     public ChiSquareTableFirstImpl()
     {
         table = new HashMap[10];
-        for(int i = 0; i < table.length; i++)
-        {
-            table[i] = new HashMap<Long, Long>();
-        }
+        Arrays.fill(table, new HashMap<Long, Long>());
         readTableData();
     }
 
@@ -26,7 +24,7 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
         try {
             BufferedReader bufferedReader = new BufferedReader(
                     new FileReader(
-                            "ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
+                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src/test/java/ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
                     )
             );
             String[] probabilities = bufferedReader.readLine().split(" ");
@@ -39,8 +37,6 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
                }
                indexOnProbabilitiesArray++;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
