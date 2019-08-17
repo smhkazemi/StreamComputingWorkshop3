@@ -1,6 +1,9 @@
-package ServiceClasses.ChiSquare;
+package ServiceClasses;
 
-public class ChiSquare {
+import ServiceClasses.ChiSquareTable.TableCriticalValues.ChiSquareTableFirstImpl;
+import ServiceClasses.ChiSquareTable.ChiSquareTableInterface;
+
+class ChiSquare {
     private static ChiSquareTableInterface chiSquareTableInterface;
     private static double expectedProbabilityForChiSquare;
 
@@ -9,7 +12,7 @@ public class ChiSquare {
         expectedProbabilityForChiSquare = 0.1;
     }
 
-    public static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
+    static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
         if(expectedValues.length != actualValues.length)
             throw new Exception("not equal length for expectedValues and actualValues");
         long chiSquare  = 0L;

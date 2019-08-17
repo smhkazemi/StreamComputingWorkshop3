@@ -1,3 +1,5 @@
+import HashingMethods.AbstractHash;
+import HashingMethods.UniversalHash;
 
 class BloomFilter<Key>{
 

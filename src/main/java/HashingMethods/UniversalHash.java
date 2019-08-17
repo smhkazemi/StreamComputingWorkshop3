@@ -1,3 +1,5 @@
+package HashingMethods;
+
 import edu.princeton.cs.introcs.StdRandom;
 
 public class UniversalHash extends AbstractHash {
@@ -5,13 +7,14 @@ public class UniversalHash extends AbstractHash {
     private int aLargePrimeNumber = 24593;  // smaller than 2^15
     private int firstCoefficient, secondCoefficient;    // only use for hash tables < 24593 in size
 
-    UniversalHash(){
+    public UniversalHash(){
         firstCoefficient = StdRandom.uniform(aLargePrimeNumber - 1) + 1;	// choose random parameters
         secondCoefficient = StdRandom.uniform(aLargePrimeNumber);
     }
 
     @Override
-    public int getHashFor(int sampledNumber, int samplingArraySize){
-        return (firstCoefficient * sampledNumber + secondCoefficient) % aLargePrimeNumber % samplingArraySize;
+    public Integer getHashFor(Object key, Object rangeForHashingResult){
+        return ((firstCoefficient * Integer.parseInt(key.toString()) + secondCoefficient) % aLargePrimeNumber)
+                % Integer.parseInt(rangeForHashingResult.toString());
     }
 }
