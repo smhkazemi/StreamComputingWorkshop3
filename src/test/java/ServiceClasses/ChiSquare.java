@@ -15,7 +15,7 @@ class ChiSquare {
     static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
         if(expectedValues.length != actualValues.length)
             throw new Exception("not equal length for expectedValues and actualValues");
-        long chiSquare  = 0L;
+        Float chiSquare  = 0F;
         for(int index = 0; index < expectedValues.length; index++)
         {
             chiSquare += calculateChiSquare(expectedValues[index].toString(), actualValues[index].toString());

@@ -14,7 +14,8 @@ public class UniversalHash extends AbstractHash {
 
     @Override
     public Integer getHashFor(Object key, Object rangeForHashingResult){
-        return ((firstCoefficient * Integer.parseInt(key.toString()) + secondCoefficient) % aLargePrimeNumber)
+        int result = ((firstCoefficient * Integer.parseInt(key.toString()) + secondCoefficient) % aLargePrimeNumber)
                 % Integer.parseInt(rangeForHashingResult.toString());
+        return (result >= 0) ? result : result + Integer.parseInt(rangeForHashingResult.toString());
     }
 }
