@@ -19,32 +19,6 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
         readTableData();
     }
 
-    private void readTableData()
-    {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(
-                    new FileReader(
-                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src/test/java/" +
-                                    "ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
-                            // ToDo: Fix addressing for the input file
-                    )
-            );
-            String[] probabilities = bufferedReader.readLine().split(" ");
-            int indexOnProbabilitiesArray = 0;
-            for (Object rowInTable : table)
-            {
-                for (String itemInTableRow : bufferedReader.readLine().split(" "))
-                {
-                    ((HashMap)rowInTable).put(Float.parseFloat(itemInTableRow), Float.parseFloat(probabilities[indexOnProbabilitiesArray]));
-                    indexOnProbabilitiesArray++;
-                }
-                indexOnProbabilitiesArray = 0;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public Float probabilityOf(Float chiTwo, int degreeOfFreedom){
         try {
@@ -70,5 +44,31 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
             }
         }
         return -1F;
+    }
+
+    private void readTableData()
+    {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(
+                    new FileReader(
+                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src/test/java/" +
+                                    "ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
+                            // ToDo: Fix addressing for the input file
+                    )
+            );
+            String[] probabilities = bufferedReader.readLine().split(" ");
+            int indexOnProbabilitiesArray = 0;
+            for (Object rowInTable : table)
+            {
+                for (String itemInTableRow : bufferedReader.readLine().split(" "))
+                {
+                    ((HashMap)rowInTable).put(Float.parseFloat(itemInTableRow), Float.parseFloat(probabilities[indexOnProbabilitiesArray]));
+                    indexOnProbabilitiesArray++;
+                }
+                indexOnProbabilitiesArray = 0;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
