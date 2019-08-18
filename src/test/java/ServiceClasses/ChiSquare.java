@@ -23,9 +23,9 @@ class ChiSquare {
         return chiSquareTableInterface.probabilityOf(chiSquare, expectedValues.length) > expectedProbabilityForChiSquare;
     }
 
-    private static Long calculateChiSquare(String expectedValue, String actualValue){
-        Long difference = Long.parseLong(expectedValue) - Long.parseLong(actualValue);
-        return difference * difference / Long.parseLong(expectedValue);
+    private static Float calculateChiSquare(String expectedValue, String actualValue){
+        Float difference = Float.parseFloat(expectedValue) - Float.parseFloat(actualValue);
+        return difference * difference / Float.parseFloat(expectedValue);
     }
 
 }

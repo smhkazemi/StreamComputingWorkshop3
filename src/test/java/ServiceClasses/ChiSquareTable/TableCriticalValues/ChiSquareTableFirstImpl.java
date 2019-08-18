@@ -6,9 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
     private ArrayList table;
@@ -64,9 +62,11 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
             e.printStackTrace();
             return -1F;
         }
-        for(Object chiValue : ((HashMap)table.get(degreeOfFreedom - 1)).keySet())
+        ArrayList keySet = new ArrayList(Arrays.asList((((HashMap) table.get(degreeOfFreedom - 1)).keySet().toArray())));
+        keySet.sort(Comparator.naturalOrder());
+        for(Object chiValue : keySet)
         {
-            if(Math.abs((Float) chiValue - chiTwo) < 1 )
+            if(Math.abs(Float.parseFloat(chiValue.toString()) - chiTwo) < 1 || chiTwo < Float.parseFloat(chiValue.toString()))
             {
                 return (Float) ((HashMap)table.get(degreeOfFreedom - 1)).get(chiValue);
             }
