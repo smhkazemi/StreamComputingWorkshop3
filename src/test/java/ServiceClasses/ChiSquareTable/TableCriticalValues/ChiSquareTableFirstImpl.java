@@ -34,6 +34,9 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
             e.printStackTrace();
             return -1F;
         }
+
+        // keySet is not sorted based on the insertion order
+
         ArrayList keySet = new ArrayList(Arrays.asList((((HashMap) table.get(degreeOfFreedom - 1)).keySet().toArray())));
         keySet.sort(Comparator.naturalOrder());
         for(Object chiValue : keySet)
