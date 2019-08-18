@@ -10,7 +10,8 @@ public class ChiSquare {
     private static ChiSquareTableInterface chiSquareTableInterface;
     private static double expectedProbabilityForChiSquare;
 
-    static {
+    static
+    {
         chiSquareTableInterface = new ChiSquareTableFirstImpl();
         expectedProbabilityForChiSquare = 0.1;
     }
@@ -24,9 +25,12 @@ public class ChiSquare {
         }
     }
 
-    private static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
+    private static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception
+    {
         if(expectedValues.length != actualValues.length)
+        {
             throw new Exception("not equal length for expectedValues and actualValues");
+        }
         Float chiSquare  = 0F;
         for(int index = 0; index < expectedValues.length; index++)
         {
@@ -35,7 +39,8 @@ public class ChiSquare {
         return chiSquareTableInterface.probabilityOf(chiSquare, expectedValues.length) > expectedProbabilityForChiSquare;
     }
 
-    private static Float calculateChiSquare(String expectedValue, String actualValue){
+    private static Float calculateChiSquare(String expectedValue, String actualValue)
+    {
         Float difference = Float.parseFloat(expectedValue) - Float.parseFloat(actualValue);
         return difference * difference / Float.parseFloat(expectedValue);
     }
