@@ -1,5 +1,5 @@
 import HashingMethods.UniversalHash;
-import ServiceClasses.ChiSquareTest;
+import ServiceClasses.ChiSquare;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -24,7 +24,7 @@ class UniversalHashTest {
                 incrementValueFor(hashResult);
             }
         }
-        ChiSquareTest.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
+        ChiSquare.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                 indexFrequencies.values().toArray());
     }
 

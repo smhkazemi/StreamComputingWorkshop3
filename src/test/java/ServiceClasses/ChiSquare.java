@@ -1,9 +1,12 @@
 package ServiceClasses;
 
-import ServiceClasses.ChiSquareTable.TableCriticalValues.ChiSquareTableFirstImpl;
 import ServiceClasses.ChiSquareTable.ChiSquareTableInterface;
+import ServiceClasses.ChiSquareTable.TableCriticalValues.ChiSquareTableFirstImpl;
 
-class ChiSquare {
+import java.util.Arrays;
+
+public class ChiSquare {
+
     private static ChiSquareTableInterface chiSquareTableInterface;
     private static double expectedProbabilityForChiSquare;
 
@@ -12,7 +15,16 @@ class ChiSquare {
         expectedProbabilityForChiSquare = 0.1;
     }
 
-    static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
+    public static void doTest(Object[] expected, Object[] observed) throws Exception
+    {
+        if(!ChiSquare.passesTheTest(expected, observed))
+        {
+            throw new Exception("Could not pass the chiSquare test" + "\n expected: "
+                    + Arrays.toString(expected) + "\n observed: " + Arrays.toString(observed));
+        }
+    }
+
+    private static boolean passesTheTest(Object[] expectedValues, Object[] actualValues) throws Exception {
         if(expectedValues.length != actualValues.length)
             throw new Exception("not equal length for expectedValues and actualValues");
         Float chiSquare  = 0F;
