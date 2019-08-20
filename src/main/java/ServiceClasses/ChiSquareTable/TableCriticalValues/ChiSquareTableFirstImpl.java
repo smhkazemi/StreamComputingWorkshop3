@@ -54,8 +54,8 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
         try {
             BufferedReader bufferedReader = new BufferedReader(
                     new FileReader(
-                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src/test/java/" +
-                                    "ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
+                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src" +
+                                    "/main/java/ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
                             // ToDo: Fix addressing for the input file
                     )
             );
