@@ -7,12 +7,12 @@ import java.util.Arrays;
 
 public class ChiSquare {
 
-    private static ChiSquareTableInterface chiSquareTableInterface;
+    private static ChiSquareTableInterface chiSquareTable;
     private static double expectedProbabilityForChiSquare;
 
     static
     {
-        chiSquareTableInterface = new ChiSquareTableFirstImpl();
+        chiSquareTable = new ChiSquareTableFirstImpl();
         expectedProbabilityForChiSquare = 0.1;
     }
 
@@ -36,7 +36,7 @@ public class ChiSquare {
         {
             chiSquare += calculateChiSquare(expectedValues[index].toString(), actualValues[index].toString());
         }
-        return chiSquareTableInterface.probabilityOf(chiSquare, expectedValues.length) > expectedProbabilityForChiSquare;
+        return chiSquareTable.probabilityOf(chiSquare, expectedValues.length) > expectedProbabilityForChiSquare;
     }
 
     private static Float calculateChiSquare(String expectedValue, String actualValue)
