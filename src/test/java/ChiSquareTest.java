@@ -7,7 +7,6 @@ class ChiSquareTest {
                     new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10});
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
         }
         try {
             ChiSquare.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
