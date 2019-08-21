@@ -3,12 +3,13 @@ import java.util.Random;
 class ReserviorTest {
 
     private static Reservoir reservoir;
-    private static Random random = new Random();
+    private static Random random;
 
     static
     {
         int samplingArraySize = 10; // for example -- feel free to change this!
         reservoir = new Reservoir(samplingArraySize);
+        random = new Random();
         random.setSeed(1299999890);
     }
 
