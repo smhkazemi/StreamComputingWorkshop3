@@ -2,21 +2,26 @@ import java.util.Random;
 
 class ReserviorTest {
 
-    static void doTest() throws Exception {
-        Reservoir reservoir;
-        int samplingArraySize = 10; // for example -- feel free to change this!
+    private static Reservoir reservoir;
+    private static int samplingArraySize = 10; // for example -- feel free to change this!
+    private static Random random = new Random();
+
+    static
+    {
         reservoir = new Reservoir(samplingArraySize);
-        Random random = new Random();
+    }
+
+    static void doTest() throws Exception {
         random.setSeed(1299999890);
-        int range = 10000;
-        for(int i = 0; i < range; i++)
+        int rangeForGeneratedRandomNumber = 10000;
+        for(int i = 0; i < rangeForGeneratedRandomNumber; i++)
         {
-            reservoir.considerItem(random.nextInt(range) % range);
+            reservoir.considerItem(random.nextInt(rangeForGeneratedRandomNumber) % rangeForGeneratedRandomNumber);
         }
         for(Object item : reservoir.report())
         {
-            if((Integer) item > range)
-                throw new Exception("item is larger than the range");
+            if((Integer) item > rangeForGeneratedRandomNumber)
+                throw new Exception("item is larger than the rangeForGeneratedRandomNumber");
             if((Integer) item < -1)
                 throw new Exception("item is less than -1" + " "  + "item  is: " + item);
         }
