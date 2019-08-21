@@ -8,7 +8,7 @@ public class UniversalHash extends AbstractHash {
     private int firstCoefficient, secondCoefficient;    // only use for hash tables < 24593 in size
 
     public UniversalHash(){
-        firstCoefficient = StdRandom.uniform(aLargePrimeNumber - 1) + 1;	// choose random parameters
+        firstCoefficient = StdRandom.uniform(aLargePrimeNumber - 1) + 1;
         secondCoefficient = StdRandom.uniform(aLargePrimeNumber);
     }
 
