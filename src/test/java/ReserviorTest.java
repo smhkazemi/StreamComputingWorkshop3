@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Random;
 
 class ReserviorTest {
@@ -15,9 +16,13 @@ class ReserviorTest {
 
     static void doTest() throws Exception {
         int rangeForGeneratedRandomNumber = 10000;
-        for(int i = 0; i < rangeForGeneratedRandomNumber; i++)
+        HashMap<Integer, Boolean> restOfTheStream = new HashMap<>();
+        int tempRandomlyGeneratedNumber;
+        for(int counter = 0; counter < rangeForGeneratedRandomNumber; counter++)
         {
-            reservoir.considerItem(random.nextInt(rangeForGeneratedRandomNumber) % rangeForGeneratedRandomNumber);
+            tempRandomlyGeneratedNumber = random.nextInt(rangeForGeneratedRandomNumber) % rangeForGeneratedRandomNumber;
+            restOfTheStream.put(tempRandomlyGeneratedNumber, true);
+            reservoir.considerItem(tempRandomlyGeneratedNumber);
         }
         for(Object item : reservoir.report())
         {
@@ -25,6 +30,8 @@ class ReserviorTest {
                 throw new Exception("item is larger than the rangeForGeneratedRandomNumber");
             if((Integer) item < -1)
                 throw new Exception("item is less than -1" + " "  + "item  is: " + item);
+            if(!restOfTheStream.containsKey(item))
+                throw new  Exception("item: " + item + " has never been produced");
         }
     }
 }
