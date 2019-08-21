@@ -3,16 +3,16 @@ import java.util.Random;
 class ReserviorTest {
 
     private static Reservoir reservoir;
-    private static int samplingArraySize = 10; // for example -- feel free to change this!
     private static Random random = new Random();
 
     static
     {
+        int samplingArraySize = 10; // for example -- feel free to change this!
         reservoir = new Reservoir(samplingArraySize);
+        random.setSeed(1299999890);
     }
 
     static void doTest() throws Exception {
-        random.setSeed(1299999890);
         int rangeForGeneratedRandomNumber = 10000;
         for(int i = 0; i < rangeForGeneratedRandomNumber; i++)
         {
