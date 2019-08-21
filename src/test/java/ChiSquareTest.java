@@ -1,7 +1,7 @@
 import ServiceClasses.ChiSquare;
 
 class ChiSquareTest {
-    static void doTest() throws Exception {
+    static void doTest() {
         try {
             ChiSquare.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                     new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10});
