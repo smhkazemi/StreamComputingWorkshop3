@@ -1,6 +1,6 @@
-package ServiceClasses.ChiSquareTable.TableCriticalValues;
+package ServiceClasses.ChiSquare.TableCriticalValues;
 
-import ServiceClasses.ChiSquareTable.ChiSquareTableInterface;
+import ServiceClasses.ChiSquare.ChiSquareTableInterface;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -54,8 +54,8 @@ public class ChiSquareTableFirstImpl implements ChiSquareTableInterface {
         try {
             BufferedReader bufferedReader = new BufferedReader(
                     new FileReader(
-                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src" +
-                                    "/main/java/ServiceClasses/ChiSquareTable/TableCriticalValues/ChiSquareData.txt"
+                            "/Users/mokazemi-93/Downloads/IE_del/StreamComputingWorkshop3/src/" +
+                                    "main/java/ServiceClasses/ChiSquare/TableCriticalValues/ChiSquareData.txt"
                             // ToDo: Fix addressing for the input file
                     )
             );

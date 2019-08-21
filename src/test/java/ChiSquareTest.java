@@ -1,4 +1,4 @@
-import ServiceClasses.ChiSquare;
+import ServiceClasses.ChiSquare.ChiSquare;
 
 class ChiSquareTest {
     static void doTest() {

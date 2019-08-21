@@ -1,7 +1,6 @@
-package ServiceClasses;
+package ServiceClasses.ChiSquare;
 
-import ServiceClasses.ChiSquareTable.ChiSquareTableInterface;
-import ServiceClasses.ChiSquareTable.TableCriticalValues.ChiSquareTableFirstImpl;
+import ServiceClasses.ChiSquare.TableCriticalValues.ChiSquareTableFirstImpl;
 
 import java.util.Arrays;
 

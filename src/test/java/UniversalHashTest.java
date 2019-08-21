@@ -1,5 +1,5 @@
 import HashingMethods.UniversalHash;
-import ServiceClasses.ChiSquare;
+import ServiceClasses.ChiSquare.ChiSquare;
 import ServiceClasses.FrequencyOfOccurrence;
 
 import java.util.Random;
