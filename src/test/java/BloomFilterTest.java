@@ -1,5 +1,5 @@
 class BloomFilterTest {
-    static void doTest(String[] args) throws Exception { //for testing
+    static void doTest(String[] args) throws Exception {
         if(args.length != 2){
             System.err.println("should be two arguments: lengthOfMembershipArray numberOfHashFunctionsToUse");
             System.exit(0);
