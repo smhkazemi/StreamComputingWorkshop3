@@ -16,7 +16,7 @@ class UniversalHashTest {
         for (int counter = 0; counter < 100;  counter++)
         {
             hashResult = universalHash.getHashFor(random.nextInt(), 10);
-            frequencyOfItems.insertNewItem(hashResult);
+            frequencyOfItems.insertItem(hashResult);
         }
         ChiSquare.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                 frequencyOfItems.reportAllFrequenciesInOrder().toArray());

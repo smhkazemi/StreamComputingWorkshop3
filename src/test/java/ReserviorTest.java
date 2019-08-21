@@ -48,7 +48,7 @@ class ReserviorTest {
                 throw new Exception("item is less than -1" + " "  + "item  is: " + item);
             if(!randomlyGeneratedStream.containsKey(item))
                 throw new  Exception("item: " + item + " has never been produced");
-            frequencyOfItems.insertNewItem(item); // Has been placed here to avoid writing another 'for' loop
+            frequencyOfItems.insertItem(item); // Has been placed here to avoid writing another 'for' loop
         }
     }
 

@@ -12,7 +12,7 @@ public class FrequencyOfOccurrence {
         frequencyHolder = new HashMap<>();
     }
 
-    public void insertNewItem(Object newItem)
+    public void insertItem(Object newItem)
     {
         if(frequencyHolder.containsKey(newItem))
         {
