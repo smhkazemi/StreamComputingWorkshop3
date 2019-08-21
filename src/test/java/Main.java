@@ -5,5 +5,6 @@ public class Main {
         ReserviorTest.doTest();
         BloomFilterTest.doTest(args);
         UniversalHashTest.doTest();
+        MorrisCounterTest.doTest(args);
     }
 }

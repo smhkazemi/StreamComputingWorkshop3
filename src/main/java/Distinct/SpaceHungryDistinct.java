@@ -26,7 +26,7 @@ public class SpaceHungryDistinct implements DistinctInterface {
     @Override
     public double distinct()
     {
-        return distinctItems.size();
+        return distinctItems.keySet().size();
     }
 
     public ArrayList<Integer> reportAllFrequenciesInOrder()
