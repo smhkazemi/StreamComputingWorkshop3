@@ -1,3 +1,5 @@
+import ServiceClasses.FrequencyOfOccurrence;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -5,13 +7,16 @@ class ReserviorTest {
 
     private static Reservoir reservoir;
     private static Random random;
+    private static FrequencyOfOccurrence frequencyOfItems;
+    private static int samplingArraySize;
 
     static
     {
-        int samplingArraySize = 10; // for example -- feel free to change this!
+        samplingArraySize = 10; // for example -- feel free to change this!
         reservoir = new Reservoir(samplingArraySize);
         random = new Random();
         random.setSeed(1299999890);
+        frequencyOfItems  = new FrequencyOfOccurrence();
     }
 
     static void doTest() throws Exception {
@@ -32,6 +37,15 @@ class ReserviorTest {
                 throw new Exception("item is less than -1" + " "  + "item  is: " + item);
             if(!randomlyGeneratedStream.containsKey(item))
                 throw new  Exception("item: " + item + " has never been produced");
+            frequencyOfItems.insertNewItem(item);
+        }
+        for(Integer frequency : frequencyOfItems.reportAllFrequenciesInOrder())
+        {
+            if(frequency > (samplingArraySize >> 1))
+            {
+                throw new Exception("An item has been sampled more than half of samplingArraySize that is: "
+                + samplingArraySize);
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ class Reservoir{
 		{
 			sampleArray[lastIndexOnSampleArrayToInsert] = toConsider;
 			lastIndexOnSampleArrayToInsert++;
+			return;
 		}
 		int randomlyGeneratedIndex = randomGenerator.nextInt(numberOfSeenItemsInStream);
 		if(randomlyGeneratedIndex < sampleArray.length)
@@ -30,8 +31,8 @@ class Reservoir{
 	
 	Object[] report()
 	{
-		Object[] resualt = new Object[lastIndexOnSampleArrayToInsert];
-		System.arraycopy(sampleArray, 0, resualt, 0, lastIndexOnSampleArrayToInsert);
-		return resualt;
+		Object[] result = new Object[lastIndexOnSampleArrayToInsert];
+		System.arraycopy(sampleArray, 0, result, 0, lastIndexOnSampleArrayToInsert);
+		return result;
 	}
 }
