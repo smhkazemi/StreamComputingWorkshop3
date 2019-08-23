@@ -2,15 +2,11 @@ import edu.princeton.cs.introcs.StdRandom;
 
 public class MorrisCounter
 {
-    private int counter;
-    private int power2;
-    /* this is still an int, so doesn't technically pack into
-    log log n bits, but illustrates the idea */
+    private short counter;
 
     MorrisCounter()
     {
         counter = 0;
-        power2 = 1;
     }
 
     void increment()
@@ -18,12 +14,11 @@ public class MorrisCounter
         if(StdRandom.uniform() < 1D / Math.pow(2, counter))
         {
             counter++;
-            power2 *= 2;
         }
     }
 
-    public int myCount()
+    public int estimatedCount()
     {
-        return power2 - 1;
+        return (int) (Math.pow(2, counter) - 1);
     }
 }
