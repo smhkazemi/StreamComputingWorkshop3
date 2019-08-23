@@ -1,4 +1,4 @@
-package MorrisCounter;
+package MorrisCounterDataStructure.MorrisCounter;
 
 import edu.princeton.cs.introcs.StdRandom;
 

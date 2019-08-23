@@ -1,4 +1,4 @@
-import MorrisCounter.MorrisCounterDataStructure;
+import MorrisCounterDataStructure.MorrisCounterDataStructure;
 
 class MorrisCounterTest
 {
