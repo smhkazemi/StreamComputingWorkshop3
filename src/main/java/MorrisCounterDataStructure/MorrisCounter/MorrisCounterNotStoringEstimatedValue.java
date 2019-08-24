@@ -14,7 +14,7 @@ public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInter
     @Override
     public void increment()
     {
-        if(StdRandom.uniform() < 1D / Math.pow(2, counter))
+        if(StdRandom.uniform() < 1D / (1 << counter))
         {
             counter++;
         }
@@ -22,6 +22,6 @@ public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInter
 
     @Override
     public Double getEstimate() {
-        return (Math.pow(2, counter) - 1);
+        return ((1 << counter) - 1D);
     }
 }
