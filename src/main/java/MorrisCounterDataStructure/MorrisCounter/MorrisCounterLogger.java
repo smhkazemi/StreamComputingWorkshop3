@@ -1,8 +1,5 @@
 package MorrisCounterDataStructure.MorrisCounter;
 
-import MorrisCounterDataStructure.MorrisCounter.MorrisCounterInterface;
-import MorrisCounterDataStructure.MorrisCounterDataStructure;
-
 public class MorrisCounterLogger
 {
 
