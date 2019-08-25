@@ -1,6 +1,7 @@
 package MorrisCounterDataStructure;
 
 import MorrisCounterDataStructure.MorrisCounter.MorrisCounterInterface;
+import MorrisCounterDataStructure.MorrisCounter.MorrisCounterLogger;
 import MorrisCounterDataStructure.MorrisCounter.MorrisCounterNotStoringEstimatedValue;
 
 import java.util.ArrayList;
@@ -16,8 +17,8 @@ public class MorrisCounterDataStructure {
     {
         morrisCounters =
                 new MorrisCounterNotStoringEstimatedValue
-                        [(int) (12D * Math.log(1D / probabilityOfBadEstimate)) + 1]
-                        [(int) (2D / Math.pow(normalizedFactorOfDeferenceWithExactSolution, 2)) + 1];
+                        [numberOfRows(probabilityOfBadEstimate)]
+                        [numberOfColumns(normalizedFactorOfDeferenceWithExactSolution)];
         for(int indexOnRow = 0; indexOnRow < morrisCounters.length; indexOnRow++)
         {
             for(int indexOnColumn = 0; indexOnColumn < morrisCounters[0].length; indexOnColumn++)
@@ -25,6 +26,7 @@ public class MorrisCounterDataStructure {
                 morrisCounters[indexOnRow][indexOnColumn] = new MorrisCounterNotStoringEstimatedValue();
             }
         }
+        MorrisCounterLogger.insertLogForDataStructureSize(morrisCounters);
     }
 
     public void increment()
@@ -41,20 +43,44 @@ public class MorrisCounterDataStructure {
     public Double getEstimate()
     {
         ArrayList<Double> meanValuesOfRows = new ArrayList<>();
-        Double meanForCurrentRow = 0D;
-        int numberOfColumns = morrisCounters[0].length;
+        Double meanForCurrentRow;
         for (MorrisCounterInterface[] morrisCounter : morrisCounters)
         {
-            for (int indexOnColumn = 0; indexOnColumn < numberOfColumns; indexOnColumn++)
+            meanForCurrentRow = 0D;
+            for (int indexOnColumn = 0; indexOnColumn < morrisCounters[0].length; indexOnColumn++)
             {
                 meanForCurrentRow += morrisCounter[indexOnColumn].getEstimate();
             }
-            meanForCurrentRow /= numberOfColumns;
-            meanValuesOfRows.add(meanForCurrentRow);
-            meanForCurrentRow = 0D;
+            meanValuesOfRows.add(meanForCurrentRow / morrisCounters[0].length);
         }
         meanValuesOfRows.sort(Comparator.naturalOrder());
+        return medianValueFor(meanValuesOfRows);
+    }
+
+    private Double medianValueFor(ArrayList<Double> meanValuesOfRows)
+    {
         return meanValuesOfRows.get(meanValuesOfRows.size() >> 1);
+    }
+
+    private int numberOfRows(Double probabilityOfBadEstimate)
+    {
+        return (int)
+                (
+                        12D *
+                                Math.log(1D / probabilityOfBadEstimate)
+                )
+                + 1;
+    }
+
+    private int numberOfColumns(Double normalizedFactorOfDeferenceWithExactSolution)
+    {
+        return (int)
+                (
+                        2D /
+                                (normalizedFactorOfDeferenceWithExactSolution *
+                                        normalizedFactorOfDeferenceWithExactSolution)
+                )
+                + 1;
     }
 
 }
