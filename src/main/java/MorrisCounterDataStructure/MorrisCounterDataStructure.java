@@ -12,12 +12,12 @@ public class MorrisCounterDataStructure {
             morrisCounters;
 
     public MorrisCounterDataStructure(Double probabilityOfBadEstimate,
-                               Double factorOfDeferenceWithExactSolution)
+                               Double normalizedFactorOfDeferenceWithExactSolution)
     {
         morrisCounters =
                 new MorrisCounterNotStoringEstimatedValue
                         [(int) (12D * Math.log(1D / probabilityOfBadEstimate)) + 1]
-                        [(int) (2D / Math.pow(2, factorOfDeferenceWithExactSolution)) + 1];
+                        [(int) (2D / Math.pow(normalizedFactorOfDeferenceWithExactSolution, 2)) + 1];
         for(int indexOnRow = 0; indexOnRow < morrisCounters.length; indexOnRow++)
         {
             for(int indexOnColumn = 0; indexOnColumn < morrisCounters[0].length; indexOnColumn++)
