@@ -1,4 +1,4 @@
-package MorrisCounterDataStructure.MorrisCounter;
+package MorrisCounterDataStructure;
 
 import edu.princeton.cs.introcs.StdRandom;
 
@@ -6,7 +6,7 @@ public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInter
 {
     private short counter;
 
-    public MorrisCounterNotStoringEstimatedValue()
+    MorrisCounterNotStoringEstimatedValue()
     {
         counter = 0;
     }

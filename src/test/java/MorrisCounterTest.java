@@ -1,5 +1,5 @@
 import MorrisCounterDataStructure.MorrisCounterDataStructure;
-import MorrisCounterDataStructure.MorrisCounter.MorrisCounterLogger;
+import MorrisCounterDataStructure.MorrisCounterLogger;
 
 class MorrisCounterTest
 {

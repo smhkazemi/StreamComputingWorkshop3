@@ -1,4 +1,4 @@
-package MorrisCounterDataStructure.MorrisCounter;
+package MorrisCounterDataStructure;
 
 public interface MorrisCounterInterface {
     void increment();
