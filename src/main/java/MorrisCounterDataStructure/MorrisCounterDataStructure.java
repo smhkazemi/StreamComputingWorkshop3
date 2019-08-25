@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class MorrisCounterDataStructure {
 
-    private MorrisCounterInterface[][]
+    private AbstractMorrisCounter[][]
             morrisCounters;
 
     public MorrisCounterDataStructure(Double probabilityOfBadEstimate,
@@ -27,7 +27,7 @@ public class MorrisCounterDataStructure {
 
     public void increment()
     {
-        for (MorrisCounterInterface[] row : morrisCounters)
+        for (AbstractMorrisCounter[] row : morrisCounters)
         {
             for (int indexOnColumn = 0; indexOnColumn < morrisCounters[0].length; indexOnColumn++)
             {
@@ -40,7 +40,7 @@ public class MorrisCounterDataStructure {
     {
         ArrayList<Double> meanValuesOfRows = new ArrayList<>();
         Double meanForCurrentRow;
-        for (MorrisCounterInterface[] morrisCounter : morrisCounters)
+        for (AbstractMorrisCounter[] morrisCounter : morrisCounters)
         {
             meanForCurrentRow = 0D;
             for (int indexOnColumn = 0; indexOnColumn < morrisCounters[0].length; indexOnColumn++)

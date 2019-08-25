@@ -6,7 +6,7 @@ public class MorrisCounterLogger
     private static int numberOfRows;
     private static int numberOfColumns;
 
-    static void insertLogForDataStructureSize(MorrisCounterInterface[][] morrisCounterArray)
+    static void insertLogForDataStructureSize(AbstractMorrisCounter[][] morrisCounterArray)
     {
         numberOfRows = morrisCounterArray.length;
         numberOfColumns = morrisCounterArray[0].length;

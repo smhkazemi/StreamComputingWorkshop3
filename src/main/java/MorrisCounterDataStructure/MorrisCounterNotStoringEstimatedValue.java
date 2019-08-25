@@ -2,7 +2,7 @@ package MorrisCounterDataStructure;
 
 import edu.princeton.cs.introcs.StdRandom;
 
-public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInterface
+class MorrisCounterNotStoringEstimatedValue extends AbstractMorrisCounter
 {
     private short counter;
 
@@ -12,7 +12,7 @@ public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInter
     }
 
     @Override
-    public void increment()
+    void increment()
     {
         if(StdRandom.uniform() < 1D / (1 << counter))
         {
@@ -21,7 +21,7 @@ public class MorrisCounterNotStoringEstimatedValue implements MorrisCounterInter
     }
 
     @Override
-    public Double getEstimate() {
+    Double getEstimate() {
         return ((1 << counter) - 1D);
     }
 }
