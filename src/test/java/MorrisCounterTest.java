@@ -5,8 +5,13 @@ class MorrisCounterTest
 {
     static void doTest(String[] args) throws Exception {
         int exactNumberOfAnItemInTheStream = 1000 * Integer.parseInt(args[0]);
+        double normalizedFactorOfDeferenceWithExactSolution = 1D / 20D,
+                probabilityOfBadEstimate = 0.01D;
+
         MorrisCounterDataStructure morrisCounterDataStructure =
-                new MorrisCounterDataStructure(0.01D, 1D / 20D);
+                new MorrisCounterDataStructure
+                        (probabilityOfBadEstimate, normalizedFactorOfDeferenceWithExactSolution);
+
         int[] sizeOfDataStructure = MorrisCounterLogger.getDataStructureSize();
         if(sizeOfDataStructure[0] != (int) (12D * Math.log(100D)) + 1)
             throw new Exception("Invalid number of rows in MorrisCounterDataStructure." +
@@ -18,7 +23,9 @@ class MorrisCounterTest
         {
             morrisCounterDataStructure.increment();
         }
-        System.out.println("Estimated: " + morrisCounterDataStructure.getEstimate()
-                + "\nActual: " + exactNumberOfAnItemInTheStream);
+        if(Math.abs(exactNumberOfAnItemInTheStream - morrisCounterDataStructure.getEstimate()) >
+                normalizedFactorOfDeferenceWithExactSolution)
+            System.out.println("exactNumberOfAnItemInTheStream: " + exactNumberOfAnItemInTheStream + " " +
+                    "estimation: " + morrisCounterDataStructure.getEstimate());
     }
 }
