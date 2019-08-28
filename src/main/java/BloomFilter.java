@@ -13,7 +13,7 @@ class BloomFilter<Key>{
 		arrayOfHashFunctions = new AbstractHash[numberOfHashFunctionsToUse];
 		for(int index = 0; index < numberOfHashFunctionsToUse; index++)
 		{
-			arrayOfHashFunctions[index] = new UniversalHash();
+			arrayOfHashFunctions[index] = new UniversalHash(24593);
 		}
 	}
 	

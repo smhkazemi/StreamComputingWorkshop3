@@ -7,7 +7,7 @@ import java.util.Random;
 class UniversalHashTest {
 
     private static SpaceHungryDistinct frequencyOfItems = new SpaceHungryDistinct();
-    private static UniversalHash universalHash = new UniversalHash();
+    private static UniversalHash universalHash = new UniversalHash(24593);
     private static Random random = new Random();
 
     static void doTest() throws Exception {
