@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
-public class SpaceHungryDistinct implements DistinctInterface {
+public class SpaceHungryDistinctAndFrequency implements DistinctInterface {
     private HashMap<Object, Integer> distinctItems;
 
-    public SpaceHungryDistinct()
+    public SpaceHungryDistinctAndFrequency()
     {
         distinctItems = new HashMap<>();
     }
 
     @Override
-    public void add(Object newItem)
+    public void addNewElementToTheCollection(Object newItem)
     {
         if(distinctItems.containsKey(newItem))
         {
@@ -24,7 +24,7 @@ public class SpaceHungryDistinct implements DistinctInterface {
     }
 
     @Override
-    public double distinct()
+    public double numberOfDistinctElements()
     {
         return distinctItems.keySet().size();
     }

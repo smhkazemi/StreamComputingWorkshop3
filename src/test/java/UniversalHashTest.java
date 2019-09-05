@@ -1,12 +1,12 @@
 import HashingMethods.UniversalHash;
 import ServiceClasses.ChiSquare.ChiSquare;
-import Distinct.SpaceHungryDistinct;
+import Distinct.SpaceHungryDistinctAndFrequency;
 
 import java.util.Random;
 
 class UniversalHashTest {
 
-    private static SpaceHungryDistinct frequencyOfItems = new SpaceHungryDistinct();
+    private static SpaceHungryDistinctAndFrequency frequencyOfItems = new SpaceHungryDistinctAndFrequency();
     private static UniversalHash universalHash = new UniversalHash(24593);
     private static Random random = new Random();
 
@@ -16,7 +16,7 @@ class UniversalHashTest {
         for (int counter = 0; counter < 100;  counter++)
         {
             hashResult = universalHash.getHashFor(random.nextInt(), 10);
-            frequencyOfItems.add(hashResult);
+            frequencyOfItems.addNewElementToTheCollection(hashResult);
         }
         ChiSquare.doTest(new Integer[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                 frequencyOfItems.reportAllFrequenciesInOrder().toArray());

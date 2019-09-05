@@ -5,8 +5,8 @@ public interface DistinctInterface
 
     static int zeros(int v)
     {
-        return Integer.numberOfTrailingZeros(v); // builtin function
+        return Integer.numberOfTrailingZeros(v);
     }
-    void add(Object o); // add a new element to the collection
-    double distinct(); // return a double representing the number of distinct elements
+    void addNewElementToTheCollection(Object newElement);
+    double numberOfDistinctElements();
 }

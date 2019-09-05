@@ -1,4 +1,4 @@
-import Distinct.SpaceHungryDistinct;
+import Distinct.SpaceHungryDistinctAndFrequency;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -7,7 +7,7 @@ class ReserviorTest {
 
     private static Reservoir reservoir;
     private static Random random;
-    private static SpaceHungryDistinct frequencyOfItems;
+    private static SpaceHungryDistinctAndFrequency frequencyOfItems;
     private static int samplingArraySize;
     private static int rangeOfNumbersInStream;
 
@@ -17,7 +17,7 @@ class ReserviorTest {
         reservoir = new Reservoir(samplingArraySize);
         random = new Random();
         random.setSeed(1299999890);
-        frequencyOfItems  = new SpaceHungryDistinct();
+        frequencyOfItems  = new SpaceHungryDistinctAndFrequency();
         rangeOfNumbersInStream = 10000;
     }
 
@@ -48,7 +48,7 @@ class ReserviorTest {
                 throw new Exception("item is less than -1" + " "  + "item  is: " + item);
             if(!randomlyGeneratedStream.containsKey(item))
                 throw new  Exception("item: " + item + " has never been produced");
-            frequencyOfItems.add(item); // Has been placed here to avoid writing another 'for' loop
+            frequencyOfItems.addNewElementToTheCollection(item); // Has been placed here to avoid writing another 'for' loop
         }
     }
 
